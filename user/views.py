@@ -1,4 +1,3 @@
-
 # Create your views here.
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -6,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.hashers import check_password, make_password
 import random
+
 
 def registerView(request):
     title = '注册'
@@ -89,7 +89,7 @@ def findpsView(request):
                 tips = '验证码已经发送'
                 password = True
                 VCodeInfo = True
-                VCode = str(random.randint(1000,9999))
+                VCode = str(random.randint(1000, 9999))
                 request.session['VCode'] = VCode
                 user[0].email_user('找回密码', VCode)
             elif VCode == request.session.get('VCode'):
